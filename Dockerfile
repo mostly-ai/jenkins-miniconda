@@ -13,12 +13,11 @@ RUN ./Miniconda3-latest-Linux-x86_64.sh -b -p /usr/lib/miniconda
 
 # Setup Miniconda
 ENV CONDA_ENVS_PATH="~/conda_envs"
-RUN chmod +x /usr/lib/miniconda/etc/profile.d/conda.sh
-RUN chmod +x /usr/lib/miniconda/etc/profile.d/conda.csh
 
-# Replace entrypoint by our entrypoint that sets up the Miniconda environment
-COPY jenkins-miniconda.sh /usr/local/bin/jenkins-miniconda.sh
-ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/jenkins-miniconda.sh"]
+# Change non-interactive shell to bash - Miniconda activate fails for
+# R packages in dash as it doesn't support functions in shell scripts
+RUN echo "dash dash/sh boolean false" | debconf-set-selections
+RUN DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
 
 # Clean up
 WORKDIR /
