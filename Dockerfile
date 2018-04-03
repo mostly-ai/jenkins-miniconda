@@ -13,7 +13,8 @@ RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 RUN chmod +x Miniconda3-latest-Linux-x86_64.sh
 RUN ./Miniconda3-latest-Linux-x86_64.sh -b -p $CONDA_DIR
 
-# Add mostlyai as a systemwide channel
+# Add mostlyai and conda-forge as systemwide channels
+RUN $CONDA_DIR/bin/conda config --add channels conda-forge --system
 RUN $CONDA_DIR/bin/conda config --add channels mostlyai --system
 
 # Change non-interactive shell to bash - Miniconda activate fails for
