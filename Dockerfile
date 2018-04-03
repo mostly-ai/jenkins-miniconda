@@ -4,12 +4,14 @@ LABEL maintainer="ci@mostly.ai"
 
 USER root
 
+ARG CONDA_DIR="/opt/conda"
+
 # Install Miniconda
 RUN mkdir /tmp/miniconda
 WORKDIR /tmp/miniconda
 RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 RUN chmod +x Miniconda3-latest-Linux-x86_64.sh
-RUN ./Miniconda3-latest-Linux-x86_64.sh -b -p /usr/lib/miniconda
+RUN ./Miniconda3-latest-Linux-x86_64.sh -b -p $CONDA_DIR
 
 # Setup Miniconda
 ENV CONDA_ENVS_PATH="~/conda_envs"
