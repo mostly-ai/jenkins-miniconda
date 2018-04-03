@@ -1,7 +1,7 @@
 # jenkins-miniconda
 Jenkins installation with Miniconda3 on top.
 
-Based on [jenkins/jenkins:lts](https://hub.docker.com/r/jenkins/jenkins/) and will be updated automatically on new release. On top of jenkins [Miniconda with Python 3.6](https://conda.io/miniconda.html) is installed at `/opt/conda`. Use `--build-arg CONDA_DIR="<conda dir>"` to override the default installation path.
+Based on [jenkins/jenkins:lts](https://hub.docker.com/r/jenkins/jenkins/) and will be updated automatically on new release. On top of Jenkins [Miniconda with Python 3.6](https://conda.io/miniconda.html) is installed at `/opt/conda`. Use `--build-arg CONDA_DIR="<conda dir>"` to override the default installation path.
 The [Mostly AI Anaconda Cloud](https://anaconda.org/mostlyai) channel is added as additional channel.
 
 ## Usage
